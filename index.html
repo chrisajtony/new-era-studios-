@@ -369,25 +369,25 @@
       <!-- video cards -->
       <figure class="vwork card overflow-hidden reveal">
         <div class="media-frame aspect-[9/16]">
-          <video class="lazy-video" data-vid="love" poster="assets/videos/posters/love.jpg" muted loop playsinline preload="none"></video>
+          <video class="lazy-video" poster="https://vz-382c5475-4dd.b-cdn.net/8b07ed67-57d7-4a56-ab94-bad1c19e2f24/thumbnail.jpg" data-src="https://vz-382c5475-4dd.b-cdn.net/8b07ed67-57d7-4a56-ab94-bad1c19e2f24/play_720p.mp4" muted loop playsinline preload="none"></video>
           <div class="tint"></div>
         </div>
       </figure>
       <figure class="vwork card overflow-hidden reveal d1">
         <div class="media-frame aspect-[9/16]">
-          <video class="lazy-video" data-vid="scifi" poster="assets/videos/posters/scifi.jpg" muted loop playsinline preload="none"></video>
+          <video class="lazy-video" poster="https://vz-382c5475-4dd.b-cdn.net/2a14e8fc-5c0b-485c-9abc-e1168d7d8dfc/thumbnail.jpg" data-src="https://vz-382c5475-4dd.b-cdn.net/2a14e8fc-5c0b-485c-9abc-e1168d7d8dfc/play_720p.mp4" muted loop playsinline preload="none"></video>
           <div class="tint"></div>
         </div>
       </figure>
       <figure class="vwork card overflow-hidden reveal d2">
         <div class="media-frame aspect-[9/16]">
-          <video class="lazy-video" data-vid="faePrince" poster="assets/videos/posters/fae-prince.jpg" muted loop playsinline preload="none"></video>
+          <video class="lazy-video" poster="https://vz-382c5475-4dd.b-cdn.net/eebea97e-6f02-4787-a1e0-9b5d6248ca8a/thumbnail.jpg" data-src="https://vz-382c5475-4dd.b-cdn.net/eebea97e-6f02-4787-a1e0-9b5d6248ca8a/play_720p.mp4" muted loop playsinline preload="none"></video>
           <div class="tint"></div>
         </div>
       </figure>
       <figure class="vwork card overflow-hidden reveal d3">
         <div class="media-frame aspect-[9/16]">
-          <video class="lazy-video" data-vid="viking" poster="assets/videos/posters/viking.jpg" muted loop playsinline preload="none"></video>
+          <video class="lazy-video" poster="https://vz-382c5475-4dd.b-cdn.net/810ac591-5ac0-4908-bb12-0a571ace0387/thumbnail.jpg" data-src="https://vz-382c5475-4dd.b-cdn.net/810ac591-5ac0-4908-bb12-0a571ace0387/play_720p.mp4" muted loop playsinline preload="none"></video>
           <div class="tint"></div>
         </div>
       </figure>
@@ -396,7 +396,7 @@
     <!-- wide demo -->
     <figure class="vwork card overflow-hidden reveal d1 mt-5">
       <div class="media-frame aspect-video">
-        <video class="lazy-video" muted loop playsinline preload="none" data-src="assets/videos/video5.mp4"></video>
+        <video class="lazy-video" poster="https://vz-382c5475-4dd.b-cdn.net/5eaad58d-4060-410f-82b0-ec647fb05287/thumbnail.jpg" data-src="https://vz-382c5475-4dd.b-cdn.net/5eaad58d-4060-410f-82b0-ec647fb05287/play_1080p.mp4" muted loop playsinline preload="none"></video>
         <div class="tint"></div>
       </div>
     </figure>
@@ -671,22 +671,8 @@
 </footer>
 
 <script>
-  // ─────────────────────────────────────────────────────────────
-  //  SHOWCASE VIDEO URLS — paste your hosted video links here.
-  //  Leave "" and the card shows its poster image instead.
-  //  (These 4 clips are too large for GitHub, so they're hosted externally.)
-  const VIDEO_URLS = {
-    love:      "",   // Love.mp4
-    scifi:     "",   // Scifi.mp4
-    faePrince: "",   // The Fae Prince.mp4
-    viking:    "",   // Viking.mp4
-  };
-  // Wire the external URLs onto their cards (only if provided).
-  document.querySelectorAll('.lazy-video[data-vid]').forEach((v) => {
-    const url = VIDEO_URLS[v.dataset.vid];
-    if (url) v.dataset.src = url;
-  });
-  // ─────────────────────────────────────────────────────────────
+  // Showcase clips are hosted on Bunny Stream (library vz-382c5475-4dd).
+  // Each card uses Bunny's own thumbnail as the poster + the MP4 as the source.
 
   // Scroll reveal
   const io = new IntersectionObserver((entries) => {
