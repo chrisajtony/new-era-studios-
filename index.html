@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>New Era Studios — Company Deck 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0D0D0D',
+          cream: '#F6F4EF',
+          gold: '#D9A441',
+          amber: '#B86A1B',
+          stone: '#7A746B',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          sans: ['Montserrat', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --ease-spring: cubic-bezier(0.22, 1, 0.36, 1); }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #0D0D0D;
+    color: #F6F4EF;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(217, 164, 65, 0.28); color: #F6F4EF; }
+
+  /* Layered cinematic base gradients */
+  .bg-cinema {
+    background-color: #0D0D0D;
+    background-image:
+      radial-gradient(1100px 700px at 78% -8%, rgba(184, 106, 27, 0.16), transparent 60%),
+      radial-gradient(900px 620px at 12% 8%, rgba(217, 164, 65, 0.09), transparent 62%),
+      radial-gradient(1200px 900px at 50% 118%, rgba(122, 116, 107, 0.10), transparent 60%);
+  }
+
+  /* Film grain overlay */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Section eyebrow label */
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #D9A441;
+  }
+  .kicker {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.68rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #7A746B;
+  }
+
+  .display { font-family: 'Cormorant Garamond', serif; line-height: 1.02; letter-spacing: -0.02em; }
+  .body-serif { font-family: 'Cormorant Garamond', serif; }
+
+  .lead { line-height: 1.7; color: rgba(246, 244, 239, 0.72); font-weight: 300; }
+
+  .hair { height: 1px; background: linear-gradient(90deg, transparent, rgba(217,164,65,0.55), transparent); }
+  .hair-left { height: 1px; background: linear-gradient(90deg, rgba(217,164,65,0.7), transparent); }
+
+  .gold-text { color: #D9A441; }
+
+  /* Elevated card surfaces (base -> elevated -> floating layering) */
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+    border: 1px solid rgba(246, 244, 239, 0.08);
+    border-radius: 14px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 24px 60px -30px rgba(0,0,0,0.9);
+    transition: transform 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(217, 164, 65, 0.34);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 36px 80px -34px rgba(184,106,27,0.35);
+  }
+
+  /* Media treatment: color layer + gradient overlay */
+  .media-frame { position: relative; overflow: hidden; }
+  .media-frame img, .media-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .media-frame .tint {
+    position: absolute; inset: 0; pointer-events: none;
+    background: rgba(184, 106, 27, 0.12);
+    mix-blend-mode: multiply;
+  }
+  .media-frame .shade {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, rgba(13,13,13,0.92) 2%, rgba(13,13,13,0.15) 42%, rgba(13,13,13,0.0) 70%);
+  }
+
+  /* Reveal on scroll (transform + opacity only) */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--ease-spring), transform 1s var(--ease-spring); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  .reveal.d4 { transition-delay: 0.32s; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* Buttons / links */
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: #0D0D0D;
+    background: #D9A441; padding: 0.9rem 1.6rem; border-radius: 999px;
+    transition: transform 0.4s var(--ease-spring), background 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+  }
+  .btn-gold:hover { transform: translateY(-2px); background: #e7b45a; box-shadow: 0 18px 40px -18px rgba(217,164,65,0.6); }
+  .btn-gold:focus-visible { outline: 2px solid #F6F4EF; outline-offset: 3px; }
+  .btn-gold:active { transform: translateY(0); }
+
+  /* Top progress bar */
+  #progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; z-index: 70;
+    background: linear-gradient(90deg, #B86A1B, #D9A441); box-shadow: 0 0 12px rgba(217,164,65,0.6); transition: width 0.1s linear; }
+
+  /* Fixed masthead */
+  #masthead { transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring); }
+  #masthead.hidden-top { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+
+  .num-index { font-family: 'Cormorant Garamond', serif; color: rgba(217,164,65,0.85); line-height: 1; }
+
+  .divider-sun { display: flex; align-items: center; justify-content: center; gap: 1.4rem; }
+  .divider-sun .line { height: 1px; width: min(120px, 22vw); background: linear-gradient(90deg, transparent, rgba(217,164,65,0.5)); }
+  .divider-sun .line.r { background: linear-gradient(90deg, rgba(217,164,65,0.5), transparent); }
+
+  .vwork { transition: transform 0.7s var(--ease-spring); }
+  .vwork:hover { transform: scale(1.015); }
+
+  .quote-mark { font-family: 'Cormorant Garamond', serif; color: rgba(217,164,65,0.45); }
+
+  /* Transparent recreated logo lockup (gold on any background) */
+  .ne-lockup { display: flex; flex-direction: column; align-items: center; }
+  .ne-lockup svg { display: block; }
+  .ne-word { font-family: 'Cormorant Garamond', serif; color: #D9A441; font-weight: 500; line-height: 0.92; letter-spacing: 0.12em; text-indent: 0.12em; }
+  .ne-sub { font-family: 'Cormorant Garamond', serif; color: #D9A441; font-weight: 500; letter-spacing: 0.52em; text-indent: 0.52em; margin-top: 0.15em; }
+  .ne-lg .ne-word { font-size: 4.6rem; }
+  .ne-lg .ne-sub  { font-size: 1.35rem; }
+  .ne-lg svg { width: 148px; }
+  .ne-md .ne-word { font-size: 3rem; }
+  .ne-md .ne-sub  { font-size: 0.9rem; }
+  .ne-md svg { width: 100px; }
+  @media (max-width: 768px) {
+    .ne-lg .ne-word { font-size: 3.1rem; }
+    .ne-lg .ne-sub  { font-size: 1rem; }
+    .ne-lg svg { width: 108px; }
+  }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid #D9A441; outline-offset: 4px; border-radius: 4px; }
+</style>
+</head>
+<body class="bg-cinema grain">
+
+<div id="progress"></div>
+
+<!-- Masthead -->
+<header id="masthead" class="fixed top-0 left-0 right-0 z-50 hidden-top">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <img src="assets/new-era/logo.png" alt="New Era Studios" class="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity" />
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[0.68rem] tracking-[0.22em] uppercase text-cream/55 font-medium">
+      <a href="#work" class="hover:text-gold transition-colors">Work</a>
+      <a href="#models" class="hover:text-gold transition-colors">Models</a>
+      <a href="#process" class="hover:text-gold transition-colors">Process</a>
+      <a href="#partners" class="hover:text-gold transition-colors">Partners</a>
+      <a href="#contact" class="text-gold hover:text-cream transition-colors">Contact</a>
+    </nav>
+  </div>
+  <div class="hair-left opacity-40"></div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" class="relative min-h-screen w-full flex items-end justify-center overflow-hidden">
+  <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="">
+    <source src="assets/new-era/front-page.mp4" type="video/mp4" />
+  </video>
+  <!-- overlays -->
+  <div class="absolute inset-0" style="background: radial-gradient(120% 90% at 50% 40%, rgba(13,13,13,0.28), rgba(13,13,13,0.72) 70%, rgba(13,13,13,0.94) 100%);"></div>
+  <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, transparent 26%, transparent 62%, rgba(13,13,13,0.98) 100%);"></div>
+  <div class="absolute inset-0 tint" style="background: rgba(184,106,27,0.08); mix-blend-mode: multiply;"></div>
+
+  <div class="relative z-10 px-6 w-full max-w-4xl text-center flex flex-col items-center mb-28 md:mb-36">
+    <p class="display italic text-cream/90 text-4xl md:text-6xl reveal in d1 mb-8" style="line-height:1.12;">The AI production studio<br class="hidden md:block" /> built by filmmakers.</p>
+    <div class="divider-sun reveal in d2">
+      <span class="line"></span>
+      <svg width="34" height="20" viewBox="0 0 34 20" fill="none" aria-hidden="true"><g stroke="#D9A441" stroke-width="1" stroke-linecap="round"><path d="M17 19a9 9 0 0 1 9-9" opacity="0"/><path d="M4 19h26"/><path d="M17 19a8 8 0 0 0-8-8"/><path d="M17 19a8 8 0 0 1 8-8"/><path d="M9 11a8 8 0 0 1 16 0" fill="none"/></g><g stroke="#D9A441" stroke-width="1" stroke-linecap="round"><line x1="17" y1="2" x2="17" y2="8"/><line x1="9" y1="5" x2="11.5" y2="9.5"/><line x1="25" y1="5" x2="22.5" y2="9.5"/><line x1="3" y1="11" x2="7" y2="12.5"/><line x1="31" y1="11" x2="27" y2="12.5"/></g></svg>
+      <span class="line r"></span>
+    </div>
+  </div>
+
+  <a href="#who" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/50 hover:text-gold transition-colors reveal in d4">
+    <span class="text-[0.6rem] tracking-[0.3em] uppercase">Scroll</span>
+    <span class="block w-[1px] h-10 bg-gradient-to-b from-gold/70 to-transparent animate-pulse"></span>
+  </a>
+</section>
+
+<!-- ===================== 01 WHO WE ARE ===================== -->
+<section id="who" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">01</span>
+      <span class="eyebrow">Who We Are</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">The founders of<br /><span class="gold-text">New Era Studios</span></h2>
+
+    <div class="grid md:grid-cols-12 gap-8 mt-14 items-start">
+      <p class="lead text-lg md:col-span-7 reveal d1">
+        New Era Studios is an AI content production company founded by a working director of photography and a working director. We bring a decade of on-set craft — lighting, lensing, blocking, story — into fully AI-driven pipelines, producing some of the highest-quality AI shows on the market today.
+      </p>
+      <div class="md:col-span-5 md:pl-8 md:border-l border-cream/10 reveal d2">
+        <p class="display text-7xl md:text-8xl gold-text leading-none">80<span class="text-4xl md:text-5xl align-top">+</span></p>
+        <p class="kicker mt-3">Micro dramas shot, combined</p>
+      </div>
+    </div>
+
+    <!-- Founder cards -->
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 mt-20">
+      <article class="card overflow-hidden reveal d1">
+        <div class="media-frame aspect-[4/5]">
+          <img src="assets/new-era/chris.jpg" alt="Chris Ajtony" />
+          <div class="tint"></div>
+          <div class="shade"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-7">
+            <p class="eyebrow mb-1">Founder</p>
+            <h3 class="display text-4xl">Chris Ajtony</h3>
+          </div>
+        </div>
+        <div class="p-7 pt-6">
+          <p class="lead text-[0.98rem]">Vancouver-based director of photography with years of professional set experience. Creator of <span class="text-cream/90">Cine Academy</span>, a cinematography education community built around his craft-first approach to the image.</p>
+        </div>
+      </article>
+
+      <article class="card overflow-hidden reveal d2">
+        <div class="media-frame aspect-[4/5]">
+          <img src="assets/new-era/simeon.jpg" alt="Simeon Hu" style="object-position: 50% 20%;" />
+          <div class="tint"></div>
+          <div class="shade"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-7">
+            <p class="eyebrow mb-1">Founder</p>
+            <h3 class="display text-4xl">Simeon Hu</h3>
+          </div>
+        </div>
+        <div class="p-7 pt-6">
+          <p class="lead text-[0.98rem]">LA-based director and veteran of high-volume vertical drama production, with deep expertise in episodic storytelling, performance, and fast-turnaround cinematic workflows.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider-sun opacity-60"><span class="line"></span><span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span><span class="line r"></span></div>
+
+<!-- ===================== 02 OPPORTUNITY ===================== -->
+<section id="opportunity" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">02</span>
+      <span class="eyebrow">The Opportunity</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">A new medium is exploding,<br />and <span class="gold-text">quality is scarce</span></h2>
+    <p class="lead text-lg max-w-3xl mt-8 reveal d1">
+      Vertical micro dramas have become one of the fastest-growing content formats in the world, while AI video has collapsed the cost of production. The result: platforms need enormous volumes of episodic content — but almost nobody can deliver it at true cinematic quality.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="card p-8 reveal d1">
+        <p class="num-index text-2xl mb-5">/ 01</p>
+        <h3 class="display text-3xl mb-3">Vertical drama boom</h3>
+        <p class="lead text-[0.95rem]">Micro-drama platforms are commissioning thousands of episodic series a year for global audiences — demand for content far outpaces supply.</p>
+      </div>
+      <div class="card p-8 reveal d2">
+        <p class="num-index text-2xl mb-5">/ 02</p>
+        <h3 class="display text-3xl mb-3">AI collapses cost</h3>
+        <p class="lead text-[0.95rem]">Generative video now produces broadcast-grade imagery at a fraction of traditional budgets, opening premium episodic content to new economics.</p>
+      </div>
+      <div class="card p-8 reveal d3">
+        <p class="num-index text-2xl mb-5">/ 03</p>
+        <h3 class="display text-3xl mb-3">The quality gap</h3>
+        <p class="lead text-[0.95rem]">Most AI content looks like AI content. Character drift, flat lighting, no visual grammar. Audiences notice — and platforms are paying for better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 WHAT WE DO ===================== -->
+<section id="what" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">03</span>
+      <span class="eyebrow">What We Do</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">Premium AI content,<br /><span class="gold-text">end to end</span></h2>
+
+    <div class="mt-16 divide-y divide-cream/10 border-y border-cream/10">
+      <div class="grid md:grid-cols-12 gap-4 md:gap-8 py-8 items-start reveal">
+        <div class="md:col-span-4 flex items-baseline gap-4">
+          <span class="num-index text-xl">01</span>
+          <h3 class="display text-3xl md:text-4xl">Episodic AI series</h3>
+        </div>
+        <p class="lead md:col-span-8 md:pt-2">Full vertical drama series developed and produced in-house or commissioned by platforms — from script and character design through final delivery.</p>
+      </div>
+      <div class="grid md:grid-cols-12 gap-4 md:gap-8 py-8 items-start reveal">
+        <div class="md:col-span-4 flex items-baseline gap-4">
+          <span class="num-index text-xl">02</span>
+          <h3 class="display text-3xl md:text-4xl">Branded &amp; commercial</h3>
+        </div>
+        <p class="lead md:col-span-8 md:pt-2">Commercial work built on the same cinematic pipeline — brand films, product spots, and campaign content with real photographic language.</p>
+      </div>
+      <div class="grid md:grid-cols-12 gap-4 md:gap-8 py-8 items-start reveal">
+        <div class="md:col-span-4 flex items-baseline gap-4">
+          <span class="num-index text-xl">03</span>
+          <h3 class="display text-3xl md:text-4xl">Format &amp; IP development</h3>
+        </div>
+        <p class="lead md:col-span-8 md:pt-2">Original show formats and IP designed natively for AI production — built to scale across episodes, seasons, and markets.</p>
+      </div>
+    </div>
+
+    <!-- Standard pullquote -->
+    <figure class="mt-16 relative card p-10 md:p-14 reveal d1 overflow-hidden">
+      <div class="absolute -top-6 left-8 quote-mark text-8xl leading-none select-none">“</div>
+      <blockquote class="body-serif text-2xl md:text-4xl leading-snug text-cream/90 relative">
+        The standard: <span class="gold-text italic">every frame answers to a cinematographer.</span> Motivated lighting. Consistent characters. Deliberate lensing and coverage. Our shows hold up shot to shot, episode to episode — because they're built like productions, not prompt experiments.
+      </blockquote>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== SELECTED WORK ===================== -->
+<section id="work" class="relative py-28 md:py-40 overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(900px 600px at 50% 0%, rgba(184,106,27,0.12), transparent 60%);"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="eyebrow">In Production</span>
+    </div>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal d1">
+      <h2 class="display text-5xl md:text-7xl">Selected <span class="gold-text">work</span></h2>
+      <p class="lead max-w-md md:text-right">Episodic AI series in active production — every frame directed, lit, and finished to a cinematic standard.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-14">
+      <!-- video cards -->
+      <figure class="vwork card overflow-hidden reveal">
+        <div class="media-frame aspect-[9/16]">
+          <video class="lazy-video" data-vid="love" poster="assets/videos/posters/love.jpg" muted loop playsinline preload="none"></video>
+          <div class="tint"></div>
+        </div>
+      </figure>
+      <figure class="vwork card overflow-hidden reveal d1">
+        <div class="media-frame aspect-[9/16]">
+          <video class="lazy-video" data-vid="scifi" poster="assets/videos/posters/scifi.jpg" muted loop playsinline preload="none"></video>
+          <div class="tint"></div>
+        </div>
+      </figure>
+      <figure class="vwork card overflow-hidden reveal d2">
+        <div class="media-frame aspect-[9/16]">
+          <video class="lazy-video" data-vid="faePrince" poster="assets/videos/posters/fae-prince.jpg" muted loop playsinline preload="none"></video>
+          <div class="tint"></div>
+        </div>
+      </figure>
+      <figure class="vwork card overflow-hidden reveal d3">
+        <div class="media-frame aspect-[9/16]">
+          <video class="lazy-video" data-vid="viking" poster="assets/videos/posters/viking.jpg" muted loop playsinline preload="none"></video>
+          <div class="tint"></div>
+        </div>
+      </figure>
+    </div>
+
+    <!-- wide demo -->
+    <figure class="vwork card overflow-hidden reveal d1 mt-5">
+      <div class="media-frame aspect-video">
+        <video class="lazy-video" muted loop playsinline preload="none" data-src="assets/videos/video5.mp4"></video>
+        <div class="tint"></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 04 PRODUCTION MODELS ===================== -->
+<section id="models" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">04</span>
+      <span class="eyebrow">Production Models</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">Three ways we bring<br /><span class="gold-text">worlds to screen</span></h2>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="card p-8 flex flex-col reveal d1">
+        <span class="num-index text-2xl mb-5">01</span>
+        <h3 class="display text-3xl mb-3">Full AI production</h3>
+        <p class="lead text-[0.95rem]">100% AI shows, end to end — characters, worlds, performance and camera all generated. Complete creative freedom, series-scale output, no physical production constraints.</p>
+      </div>
+      <div class="card p-8 flex flex-col reveal d2">
+        <span class="num-index text-2xl mb-5">02</span>
+        <h3 class="display text-3xl mb-3">Hybrid production</h3>
+        <p class="lead text-[0.95rem]">Real actors, AI worlds. We shoot live performers and replace the environments with AI — transporting audiences into fully immersive worlds without building a single set.</p>
+      </div>
+      <div class="card p-8 flex flex-col reveal d3">
+        <span class="num-index text-2xl mb-5">03</span>
+        <h3 class="display text-3xl mb-3">AI VFX on live action</h3>
+        <p class="lead text-[0.95rem]">Cinematic AI visual effects composited over live-action footage — impossible shots, creatures, worlds and set extensions at a fraction of traditional VFX cost and turnaround.</p>
+      </div>
+    </div>
+
+    <!-- Hybrid before/after visual -->
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <figure class="card overflow-hidden reveal d1">
+        <div class="media-frame aspect-video">
+          <img src="assets/new-era/hybrid-2.jpg" alt="Hybrid production — live plate to AI world" />
+          <div class="tint"></div>
+        </div>
+        <figcaption class="p-6 flex items-center gap-4">
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+          <p class="kicker">Hybrid — live performance → AI world</p>
+        </figcaption>
+      </figure>
+      <figure class="card overflow-hidden reveal d2">
+        <div class="media-frame aspect-video">
+          <img src="assets/new-era/hybrid-1.jpg" alt="Hybrid production — set extension" />
+          <div class="tint"></div>
+        </div>
+        <figcaption class="p-6 flex items-center gap-4">
+          <span class="w-2 h-2 rounded-full bg-amber"></span>
+          <p class="kicker">AI VFX — impossible shots on real footage</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Global talent — worldwide team map -->
+    <figure class="mt-8 card overflow-hidden reveal d1">
+      <div class="relative">
+        <img src="assets/new-era/team-map.png" alt="New Era Studios team locations worldwide — Vancouver, Los Angeles, New York, United Kingdom, Europe, India, China, Hong Kong" class="block w-full h-auto" />
+        <div class="absolute inset-0 pointer-events-none" style="background: rgba(184,106,27,0.05); mix-blend-mode: multiply;"></div>
+        <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style="background: linear-gradient(to top, rgba(13,13,13,0.55), transparent);"></div>
+      </div>
+      <figcaption class="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+        <div class="md:w-1/3">
+          <h3 class="display text-3xl gold-text">Global talent,<br />one standard</h3>
+        </div>
+        <p class="lead md:w-2/3 md:border-l border-cream/10 md:pl-8">A worldwide network of AI artists and filmmakers producing fantastic-quality work — trained on our pipeline and held to our cinematic standard.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 05 TRACK RECORD ===================== -->
+<section id="track" class="relative py-28 md:py-40 px-6 overflow-hidden">
+  <div class="absolute inset-0" style="background: radial-gradient(800px 500px at 80% 50%, rgba(217,164,65,0.08), transparent 60%);"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">05</span>
+      <span class="eyebrow">Track Record</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">Built on real<br /><span class="gold-text">production volume</span></h2>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-16 border-t border-cream/10 pt-14">
+      <div class="reveal d1">
+        <p class="display text-7xl md:text-8xl gold-text leading-none">80<span class="text-4xl align-top">+</span></p>
+        <p class="lead text-[0.95rem] mt-4">Micro dramas shot by our founders, combined.</p>
+      </div>
+      <div class="reveal d2">
+        <p class="display text-7xl md:text-8xl gold-text leading-none">10<span class="text-4xl align-top">+</span></p>
+        <p class="lead text-[0.95rem] mt-4">Years of professional cinematography and direction across commercials, series &amp; brands.</p>
+      </div>
+      <div class="reveal d3">
+        <p class="display text-7xl md:text-8xl gold-text leading-none">20<span class="text-4xl align-top">+</span></p>
+        <p class="lead text-[0.95rem] mt-4">A team of talent all over the world — artists and filmmakers producing at our cinematic standard.</p>
+      </div>
+    </div>
+
+    <div class="mt-14 card p-8 md:p-10 flex items-start gap-6 reveal d1">
+      <span class="mt-2 flex-shrink-0 w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+      <p class="lead text-lg"><span class="text-cream/90 font-medium" style="font-family:'Montserrat'">In active production today.</span> Multiple episodic AI series currently in production, including platform-commissioned vertical dramas for international audiences — delivered on schedule, at series scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06 HOW WE WORK ===================== -->
+<section id="process" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">06</span>
+      <span class="eyebrow">How We Work</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">A production pipeline,<br /><span class="gold-text">not a prompt box</span></h2>
+
+    <div class="mt-16 grid md:grid-cols-4 gap-px bg-cream/10 border border-cream/10 rounded-2xl overflow-hidden">
+      <div class="bg-ink p-8 reveal d1">
+        <p class="num-index text-5xl mb-6">01</p>
+        <h3 class="display text-2xl mb-3 text-cream">Develop</h3>
+        <p class="lead text-[0.9rem]">Lookbooks, character turnarounds and visual bibles — every series starts with real pre-production.</p>
+      </div>
+      <div class="bg-ink p-8 reveal d2">
+        <p class="num-index text-5xl mb-6">02</p>
+        <h3 class="display text-2xl mb-3 text-cream">Design</h3>
+        <p class="lead text-[0.9rem]">Locked character and environment assets generated to a defined photographic style, before a single shot is animated.</p>
+      </div>
+      <div class="bg-ink p-8 reveal d3">
+        <p class="num-index text-5xl mb-6">03</p>
+        <h3 class="display text-2xl mb-3 text-cream">Animate</h3>
+        <p class="lead text-[0.9rem]">Shot-by-shot animation with timecoded direction — blocking, camera moves and performance treated like a real set.</p>
+      </div>
+      <div class="bg-ink p-8 reveal d4">
+        <p class="num-index text-5xl mb-6">04</p>
+        <h3 class="display text-2xl mb-3 text-cream">Finish</h3>
+        <p class="lead text-[0.9rem]">Upscale, grade and conform to delivery spec. Cinematic consistency held across every episode of a season.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex items-start gap-5 max-w-4xl reveal d1">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="mt-1 flex-shrink-0"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3" stroke="#D9A441" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" stroke="#D9A441" stroke-width="1.3"/></svg>
+      <p class="lead"><span class="text-cream/90">Consistency systems</span> — locked source assets, character sheets and style bibles — keep faces, wardrobe and worlds identical across hundreds of shots.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-sun opacity-60"><span class="line"></span><span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span><span class="line r"></span></div>
+
+<!-- ===================== 07 WHY DIFFERENT ===================== -->
+<section id="why" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">07</span>
+      <span class="eyebrow">Why We're Different</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">Cinematography &amp; direction<br />is our <span class="gold-text">unfair advantage</span></h2>
+    <p class="lead text-lg max-w-3xl mt-8 reveal d1">
+      Anyone can generate footage. Very few can direct it. Our founders' craft — built across 80+ micro dramas and years of professional sets — is embedded into every stage of the pipeline.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-16">
+      <div class="card p-8 reveal d1">
+        <h3 class="display text-3xl mb-3 gold-text">Motivated light</h3>
+        <p class="lead text-[0.95rem]">Every source has a reason. Lighting logic drives mood, geography and story — not random model aesthetics.</p>
+      </div>
+      <div class="card p-8 reveal d2">
+        <h3 class="display text-3xl mb-3 gold-text">Real visual grammar</h3>
+        <p class="lead text-[0.95rem]">Lens choice, coverage, blocking and edit rhythm follow the same rules as a physical production.</p>
+      </div>
+      <div class="card p-8 reveal d1">
+        <h3 class="display text-3xl mb-3 gold-text">Character consistency</h3>
+        <p class="lead text-[0.95rem]">Proprietary asset-locking workflows keep characters recognizably themselves across full seasons.</p>
+      </div>
+      <div class="card p-8 reveal d2">
+        <h3 class="display text-3xl mb-3 gold-text">Series-scale systems</h3>
+        <p class="lead text-[0.95rem]">Cost-modeled, repeatable pipelines built to deliver dozens of episodes on platform schedules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 08 PARTNERS ===================== -->
+<section id="partners" class="relative py-28 md:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-baseline gap-5 mb-8 reveal">
+      <span class="num-index text-4xl md:text-5xl">08</span>
+      <span class="eyebrow">Partners</span>
+    </div>
+    <h2 class="display text-5xl md:text-7xl max-w-4xl reveal d1">Building the tools<br /><span class="gold-text">alongside the shows</span></h2>
+    <p class="lead text-lg max-w-3xl mt-8 reveal d1">
+      We work directly with our software partners at Ophelia and Absurd — pushing AI video tooling forward from inside real productions. What we learn on set shapes the software; what the software unlocks shapes the shows.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-16">
+      <article class="card p-8 md:p-10 reveal d1">
+        <div class="h-16 flex items-center mb-6">
+          <img src="assets/new-era/ophelia.jpeg" alt="Ophelia" class="h-14 w-14 rounded-xl object-cover ring-1 ring-cream/10" />
+          <span class="display text-4xl ml-4 text-cream">Ophelia</span>
+        </div>
+        <p class="lead">A creative AI video platform we use and help refine in production — feeding back real episodic workflows, consistency demands and cinematic requirements into the product.</p>
+      </article>
+      <article class="card p-8 md:p-10 reveal d2">
+        <div class="h-16 flex items-center mb-6">
+          <img src="assets/new-era/absurd.jpg" alt="Absurd" class="h-14 w-14 rounded-xl object-cover ring-1 ring-cream/10" />
+          <span class="display text-4xl ml-4 text-cream">Absurd</span>
+        </div>
+        <p class="lead">An innovation partner on the frontier of generative filmmaking — collaborating with us on the techniques that push AI video closer to true cinematic realism.</p>
+      </article>
+    </div>
+
+    <p class="body-serif italic text-2xl md:text-3xl text-cream/85 max-w-4xl mt-14 reveal d1">
+      Production-informed tooling is a moat: <span class="gold-text">our pipeline improves with every project</span>, in ways prompt-only studios can't replicate.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== 09 VISION / CLOSING ===================== -->
+<section id="contact" class="relative min-h-screen flex items-center overflow-hidden py-28">
+  <video class="absolute inset-0 w-full h-full object-cover opacity-30" autoplay muted loop playsinline>
+    <source src="assets/new-era/front-page.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0" style="background: radial-gradient(120% 100% at 50% 50%, rgba(13,13,13,0.6), rgba(13,13,13,0.94) 80%);"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 w-full text-center">
+    <span class="eyebrow reveal">09 — Vision</span>
+    <h2 class="display text-5xl md:text-8xl mt-6 reveal d1">Pushing the boundaries<br />of <span class="gold-text">cinematic realism</span></h2>
+    <p class="lead text-lg md:text-xl max-w-3xl mx-auto mt-10 reveal d1">
+      We believe the next generation of great shows will be made by filmmakers who master AI — not by AI alone. New Era Studios exists to prove that AI content can carry the same craft, emotion and visual language as anything shot on a real set. That's the standard we hold every frame to.
+    </p>
+
+    <div class="divider-sun mt-16 mb-10 reveal d2">
+      <span class="line"></span>
+      <div class="ne-lockup ne-md" role="img" aria-label="New Era Studios">
+        <svg viewBox="0 0 200 120" fill="none" aria-hidden="true">
+          <g stroke="#D9A441" stroke-width="1.7" stroke-linecap="round" fill="none">
+            <line x1="28" y1="92" x2="172" y2="92"/>
+            <path d="M70 92 A30 30 0 0 1 130 92"/>
+            <line x1="100.0" y1="59.0" x2="100.0" y2="22.0"/>
+            <line x1="91.5" y1="60.1" x2="83.4" y2="30.2"/>
+            <line x1="108.5" y1="60.1" x2="116.6" y2="30.2"/>
+            <line x1="83.5" y1="63.4" x2="71.5" y2="42.6"/>
+            <line x1="116.5" y1="63.4" x2="128.5" y2="42.6"/>
+            <line x1="76.7" y1="68.7" x2="64.6" y2="56.6"/>
+            <line x1="123.3" y1="68.7" x2="135.4" y2="56.6"/>
+            <line x1="70.9" y1="76.5" x2="62.9" y2="72.3"/>
+            <line x1="129.1" y1="76.5" x2="137.1" y2="72.3"/>
+            <line x1="67.5" y1="86.3" x2="64.5" y2="85.7"/>
+            <line x1="132.5" y1="86.3" x2="135.5" y2="85.7"/>
+          </g>
+        </svg>
+        <span class="ne-word">NEW ERA</span>
+        <span class="ne-sub">STUDIOS</span>
+      </div>
+      <span class="line r"></span>
+    </div>
+
+    <p class="body-serif italic text-3xl md:text-5xl text-cream/90 reveal d2">Let's make something<br />the market hasn't seen yet.</p>
+
+    <div class="mt-12 flex flex-col items-center gap-6 reveal d3">
+      <a href="mailto:chris@newerastudios.com" class="btn-gold">Start a Conversation
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="kicker">Chris Ajtony&nbsp;&nbsp;·&nbsp;&nbsp;Simeon Hu&nbsp;&nbsp;·&nbsp;&nbsp;Vancouver, Canada</p>
+    </div>
+  </div>
+</section>
+
+<footer class="relative border-t border-cream/10 py-10 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <img src="assets/new-era/logo.png" alt="New Era Studios" class="h-10 w-auto opacity-80" />
+    <p class="kicker">© 2026 New Era Studios — The AI production studio built by filmmakers.</p>
+  </div>
+</footer>
+
+<script>
+  // ─────────────────────────────────────────────────────────────
+  //  SHOWCASE VIDEO URLS — paste your hosted video links here.
+  //  Leave "" and the card shows its poster image instead.
+  //  (These 4 clips are too large for GitHub, so they're hosted externally.)
+  const VIDEO_URLS = {
+    love:      "",   // Love.mp4
+    scifi:     "",   // Scifi.mp4
+    faePrince: "",   // The Fae Prince.mp4
+    viking:    "",   // Viking.mp4
+  };
+  // Wire the external URLs onto their cards (only if provided).
+  document.querySelectorAll('.lazy-video[data-vid]').forEach((v) => {
+    const url = VIDEO_URLS[v.dataset.vid];
+    if (url) v.dataset.src = url;
+  });
+  // ─────────────────────────────────────────────────────────────
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal:not(.in)').forEach((el) => io.observe(el));
+
+  // Lazy video: load + play only when in view, pause when out
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.dataset.src) return; // no URL yet — keep showing the poster
+        if (!v.dataset.loaded) {
+          const s = document.createElement('source');
+          s.src = v.dataset.src;
+          v.appendChild(s);
+          v.dataset.loaded = '1';
+          v.load();
+        }
+        const p = v.play(); if (p && p.catch) p.catch(() => {});
+      } else {
+        if (v.dataset.loaded) v.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.lazy-video').forEach((v) => vio.observe(v));
+
+  // Progress bar + masthead
+  const progress = document.getElementById('progress');
+  const masthead = document.getElementById('masthead');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    progress.style.width = (scrolled * 100) + '%';
+    if (h.scrollTop > window.innerHeight * 0.75) masthead.classList.remove('hidden-top');
+    else masthead.classList.add('hidden-top');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>
